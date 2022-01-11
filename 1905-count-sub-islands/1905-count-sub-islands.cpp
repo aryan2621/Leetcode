@@ -4,9 +4,7 @@ public:
         if(i<0 || j<0 || i>=grid2.size() || j>=grid2[0].size() || grid2[i][j]==0){
             return;
         }
-         if(grid1[i][j]!=grid2[i][j]){
-            f = 0;
-        } 
+         if(grid1[i][j]!=grid2[i][j]) f = 0;
         
         grid2[i][j] = 0;
         
