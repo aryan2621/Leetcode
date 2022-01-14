@@ -1,19 +1,18 @@
 class Solution {
 public:
     int minimumDeletions(string s) {
-        int ans=0;
-        stack<char> st;
         int n=s.size();
-        for(int i=n-1;i>=0;i--){
-            char c=s[i];
-            if(!st.empty() and st.top()<c){
-                ans+=1;
-                st.pop();
-            }
-            else{
-                st.push(c);
-            }
-        }
+        int pre[n+1];
+        int post[n+2];
+        pre[0]=0;
+        for(int i=1;i<=n;i++) pre[i]=pre[i-1]+(s[i-1]=='b');
+        
+        post[n+1]=0;
+        
+        for(int i=n;i>=1;i--) post[i]=post[i+1]+(s[i-1]=='a');
+            
+        int ans=INT_MAX;
+        for(int i=0;i<=n;i++) ans=min(ans,pre[i]+post[i+1]);
         return ans;
     }
 };
