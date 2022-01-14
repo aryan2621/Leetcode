@@ -5,6 +5,7 @@ public:
         stringstream ss;
         ss << str;
         ss >> r;
+        cout<<str<<" "<<r<<" "<<endl;
         return r;
     }
     
