@@ -11,21 +11,17 @@ public:
         vector<int> dis(arr.size(),1e9);
         
         dis[0]=0;
+        
         while(!q.empty()){
-            
-            int index=q.front();
+            int pos=q.front();
             q.pop();
-            
-            if(index==arr.size() - 1) return dis[index];
-            
-            vector<int> &list=m[arr[index]];
-            list.push_back(index - 1);
-            list.push_back(index + 1);
-            
-            for(auto  &x : list){
-                
-                if(x>=0 and x<arr.size() and dis[x]>dis[index] + 1){
-                    dis[x] = dis[index] + 1;
+            if(pos==arr.size()-1) return dis[pos];
+            vector<int> &list=m[arr[pos]];
+            list.push_back(pos+1);
+            list.push_back(pos-1);
+            for(auto &x:list){
+                if(x>=0 and x<arr.size() and dis[x]>dis[pos]+1){
+                    dis[x] =dis[pos]+1;
                     q.push(x);
                 }
             }
