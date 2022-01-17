@@ -14,7 +14,8 @@ public:
                 int C = stoi(s.substr(a+b, c));
                 int D = stoi(s.substr(a+b+c, d));
                 if (A<=255 && B<=255 && C<=255 && D<=255)
-                    if ( (ans=to_string(A)+"."+to_string(B)+"."+to_string(C)+"."+to_string(D)).length() == s.length()+3)
+                    if ( (ans=to_string(A)+"."+to_string(B)+"."+to_string(C)+"."+
+                          to_string(D)).length() == s.length()+3)
                         ret.push_back(ans);
             }    
         
