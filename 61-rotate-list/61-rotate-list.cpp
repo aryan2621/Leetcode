@@ -11,8 +11,9 @@ public:
             len+=1;
         }
         nt->next=head;
+        int i=0;
         if(k %= len){
-            for(int i=0;i<len-k;i++) nt=nt->next;
+            while(i++<len-k) nt=nt->next;
         }
         nh=nt->next;
         nt->next=NULL;
