@@ -1,22 +1,24 @@
 class Solution {
 public:
-   void DFS(string digits, int pos, string& path, vector<string>& res, vector<string>& letter){
-        if(pos == digits.size()){
-            res.push_back(path);
-            return;
-        }
-        for(auto c: letter[digits[pos] - '0']){
-            path.push_back(c);
-            DFS(digits, pos + 1, path, res, letter);
-            path.pop_back();
-        }
-    }
+  const vector<string> pad = {
+        "", "", "abc", "def", "ghi", "jkl",
+        "mno", "pqrs", "tuv", "wxyz"
+    };
+    
     vector<string> letterCombinations(string digits) {
-        vector<string>ans;
-        if(digits.empty()) return ans;
-        vector<string>mobile({"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"});
-        string temp = "";
-        DFS(digits, 0, temp, ans, mobile);
-        return ans;
+        if (digits.empty()) return {};
+		vector<string> result;
+        result.push_back("");
+        
+        for(auto digit: digits) {
+            vector<string> tmp;
+            for(auto candidate: pad[digit - '0']) {
+                for(auto s: result) {
+                    tmp.push_back(s + candidate);
+                }
+            }
+            result.swap(tmp);
+        }
+        return result;
     }
 };
